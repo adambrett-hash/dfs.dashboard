@@ -989,7 +989,7 @@ body {
 
 
 <!-- PASSWORD GATE -->
-<div id="pw-gate" style="display: none;">
+<div id="pw-gate" style="display: flex;">
   <div id="pw-box">
     <div id="pw-logo">🏈</div>
     <h2>DFS Project Dashboard</h2>
@@ -3792,7 +3792,11 @@ function exportSnapshot() {
     dairLog:       localStorage.getItem('dfs_dair_log')        || '[]',
   };
   const inject = `<script>window.SNAPSHOT={fntsy:${snap.fntsy},deps:${snap.deps},feats:${snap.feats},lastUpdate:${JSON.stringify(snap.lastUpdate)},status:${JSON.stringify(snap.status)},statusCards:${snap.statusCards},nextStepCards:${snap.nextStepCards},dairLog:${snap.dairLog}};<\/script>`;
+  // Reset password gate so it shows on the exported snapshot
+  const pwGate = document.getElementById('pw-gate');
+  if (pwGate) pwGate.style.display = 'flex';
   const html = '<!DOCTYPE html>' + document.documentElement.outerHTML.replace('<head>', '<head>\n' + inject);
+  if (pwGate) pwGate.style.display = 'none';
   const date = new Date().toISOString().split('T')[0];
   const a = Object.assign(document.createElement('a'), {
     href: URL.createObjectURL(new Blob([html], {type:'text/html'})),
@@ -4213,7 +4217,11 @@ async function doPublish(cfg) {
       dairLog:      localStorage.getItem('dfs_dair_log')          || '[]',
     };
     const inject = `<script>window.SNAPSHOT={fntsy:${snap.fntsy},deps:${snap.deps},feats:${snap.feats},lastUpdate:${JSON.stringify(snap.lastUpdate)},status:${JSON.stringify(snap.status)},statusCards:${snap.statusCards},nextStepCards:${snap.nextStepCards},dairLog:${snap.dairLog}};<\/script>`;
+    // Reset password gate so it shows on the published snapshot
+    const pwGate2 = document.getElementById('pw-gate');
+    if (pwGate2) pwGate2.style.display = 'flex';
     const html = '<!DOCTYPE html>' + document.documentElement.outerHTML.replace('<head>', '<head>\n' + inject);
+    if (pwGate2) pwGate2.style.display = 'none';
 
     // Unicode-safe base64 encode
     const bytes = new TextEncoder().encode(html);
