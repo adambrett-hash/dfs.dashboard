@@ -883,6 +883,39 @@ body {
   .stat-badge { display: none; }
 }
 </style>
+
+<style>
+#pw-gate {
+  position: fixed; inset: 0; z-index: 99999;
+  background: #0F172A;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Inter', sans-serif;
+}
+#pw-box {
+  background: #1E293B; border-radius: 16px;
+  padding: 40px 48px; text-align: center;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+  min-width: 320px;
+}
+#pw-box h2 { color: #F1F5F9; font-size: 22px; margin: 0 0 6px; }
+#pw-box p { color: #94A3B8; font-size: 13px; margin: 0 0 24px; }
+#pw-input {
+  width: 100%; box-sizing: border-box;
+  padding: 12px 16px; border-radius: 8px;
+  border: 1px solid #334155; background: #0F172A;
+  color: #F1F5F9; font-size: 16px; letter-spacing: 2px;
+  text-align: center; outline: none; margin-bottom: 12px;
+}
+#pw-input:focus { border-color: #3B82F6; }
+#pw-btn {
+  width: 100%; padding: 12px; border-radius: 8px;
+  background: #3B82F6; color: white; border: none;
+  font-size: 15px; font-weight: 600; cursor: pointer;
+}
+#pw-btn:hover { background: #2563EB; }
+#pw-error { color: #F87171; font-size: 13px; margin-top: 10px; min-height: 18px; }
+#pw-logo { font-size: 36px; margin-bottom: 16px; }
+</style>
 </head>
 <body>
 
@@ -954,6 +987,40 @@ body {
   </div>
 </div>
 
+
+<!-- PASSWORD GATE -->
+<div id="pw-gate" style="display: none;">
+  <div id="pw-box">
+    <div id="pw-logo">🏈</div>
+    <h2>DFS Project Dashboard</h2>
+    <p>Enter password to continue</p>
+    <input id="pw-input" type="password" placeholder="••••••••" onkeydown="if(event.key==='Enter')checkPW()" autofocus="">
+    <button id="pw-btn" onclick="checkPW()">Unlock</button>
+    <div id="pw-error"></div>
+  </div>
+</div>
+<script>
+(function() {
+  if (sessionStorage.getItem('dfs_auth') === '1') {
+    document.addEventListener('DOMContentLoaded', function() {
+      var g = document.getElementById('pw-gate');
+      if (g) g.style.display = 'none';
+    });
+  }
+})();
+function checkPW() {
+  var val = document.getElementById('pw-input').value;
+  if (val === 'DFS!!!') {
+    sessionStorage.setItem('dfs_auth', '1');
+    document.getElementById('pw-gate').style.display = 'none';
+  } else {
+    document.getElementById('pw-error').textContent = 'Incorrect password. Try again.';
+    document.getElementById('pw-input').value = '';
+    document.getElementById('pw-input').focus();
+  }
+}
+</script>
+
 <!-- MAIN -->
 <div class="content">
 
@@ -980,7 +1047,7 @@ body {
       <div class="ms-date">Jul 14, 2026</div>
       <div class="ms-name-row">
         <span class="ms-name">Alpha</span>
-        <span class="ms-days-inline ms-days-next">— 60 days away</span>
+        <span class="ms-days-inline ms-days-next">— 59 days away</span>
       </div>
       <div class="ms-divider"></div>
       <div class="ms-feat-count">FEATs: <span class="ms-feat-done">5</span> of 26 done</div>
@@ -989,7 +1056,7 @@ body {
       <div class="ms-date">Aug 12, 2026</div>
       <div class="ms-name-row">
         <span class="ms-name">Beta</span>
-        <span class="ms-days-inline">— 89 days away</span>
+        <span class="ms-days-inline">— 88 days away</span>
       </div>
       <div class="ms-divider"></div>
       <div class="ms-feat-count">FEATs: <span class="ms-feat-done">0</span> of 15 done</div>
@@ -998,7 +1065,7 @@ body {
       <div class="ms-date">Sep 1, 2026</div>
       <div class="ms-name-row">
         <span class="ms-name">Public Launch</span>
-        <span class="ms-days-inline">— 109 days away</span>
+        <span class="ms-days-inline">— 108 days away</span>
       </div>
       <div class="ms-divider"></div>
       <div class="ms-feat-count">FEATs: <span class="ms-feat-done">0</span> of 3 done</div>
