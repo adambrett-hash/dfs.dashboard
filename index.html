@@ -701,6 +701,83 @@ body {
 .status-dot-sm-amber { background: #F59E0B; }
 .status-dot-sm-red   { background: #EF4444; }
 
+
+/* ── ODDS FACTORY SECTION ── */
+.of-subsection-title {
+  font-size: 13px; font-weight: 700; color: #1E293B;
+  text-transform: uppercase; letter-spacing: 0.8px;
+  margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+}
+.of-subsection-title::before { content: ''; display: inline-block; width: 3px; height: 14px; background: #F59E0B; border-radius: 2px; }
+
+/* Gantt */
+.of-gantt { width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 20px; }
+.of-gantt th {
+  background: #F8FAFC; color: #64748B; font-weight: 700;
+  font-size: 10px; letter-spacing: 0.8px; text-transform: uppercase;
+  padding: 6px 8px; border: 1px solid #E2E8F0; text-align: center;
+  white-space: nowrap;
+}
+.of-gantt th.now-col { background: #EFF6FF; color: #3B82F6; }
+.of-gantt td { border: 1px solid #E2E8F0; padding: 0; height: 32px; }
+.of-gantt td.label-col {
+  padding: 6px 10px; font-size: 11px; font-weight: 600; color: #1E293B;
+  background: #FAFAFA; min-width: 220px; max-width: 260px; white-space: nowrap;
+  overflow: hidden; text-overflow: ellipsis;
+}
+.of-gantt td.empty-cell { background: #FAFAFA; }
+.of-gantt td.bar-cell { background: #F59E0B; position: relative; }
+.of-gantt td.bar-cell-blue { background: #3B82F6; }
+.of-gantt td.bar-cell-green { background: #10B981; }
+.of-gantt td.bar-start { border-radius: 6px 0 0 6px; }
+.of-gantt td.bar-end   { border-radius: 0 6px 6px 0; }
+.of-gantt td.bar-solo  { border-radius: 6px; }
+.of-gantt tr:hover td.label-col { background: #F1F5F9; }
+.of-now-badge {
+  display: inline-block; background: #3B82F6; color: white;
+  font-size: 9px; font-weight: 700; padding: 1px 5px; border-radius: 3px;
+  letter-spacing: 0.5px; vertical-align: middle; margin-left: 4px;
+}
+
+/* Open Items (simplified DAIR) */
+.of-open-items { display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px; }
+.of-item-card {
+  display: flex; align-items: flex-start; gap: 10px;
+  background: white; border: 1px solid #E2E8F0;
+  border-left: 4px solid #F59E0B;
+  border-radius: 8px; padding: 10px 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  transition: box-shadow 0.15s;
+}
+.of-item-card:hover { box-shadow: 0 3px 10px rgba(0,0,0,0.08); }
+.of-item-date {
+  flex-shrink: 0; font-size: 11px; font-weight: 600; color: #475569;
+  background: #F1F5F9; border: 1px solid #E2E8F0; border-radius: 5px;
+  padding: 3px 8px; cursor: pointer; white-space: nowrap;
+  appearance: none; -webkit-appearance: none;
+  font-family: inherit;
+}
+.of-item-date:hover  { background: #E2E8F0; border-color: #94A3B8; }
+.of-item-date:focus  { outline: none; border-color: #3B82F6; background: white; }
+.of-item-text {
+  flex: 1; font-size: 13px; color: #334155; line-height: 1.5;
+  min-height: 20px; outline: none; border: none; background: transparent;
+  font-family: inherit;
+}
+.of-item-text:empty::before { content: 'Enter open item…'; color: #CBD5E1; font-style: italic; }
+.of-item-remove {
+  flex-shrink: 0; background: none; border: none; cursor: pointer;
+  color: #CBD5E1; font-size: 18px; line-height: 1; padding: 0 2px;
+  transition: color 0.15s;
+}
+.of-item-remove:hover { color: #EF4444; }
+.of-add-btn {
+  background: #FEF3C7; color: #92400E; border: 1px dashed #F59E0B;
+  border-radius: 8px; padding: 8px 16px; font-size: 12px; font-weight: 600;
+  cursor: pointer; width: 100%; text-align: center; transition: background 0.15s;
+}
+.of-add-btn:hover { background: #FDE68A; }
+
 /* ── STAKEHOLDERS ── */
 .sh-team-row {
   display: grid;
@@ -1038,7 +1115,7 @@ function checkPW() {
       </div>
     </div>
     <div class="sprint-chart-wrap">
-      <canvas id="sprint-chart" width="1352" height="220" style="display: block; box-sizing: border-box; height: 220px; width: 1352px;"></canvas>
+      <canvas id="sprint-chart" width="1171" height="220" style="display: block; box-sizing: border-box; height: 220px; width: 1171px;"></canvas>
     </div>
   </div>
 
@@ -1047,7 +1124,7 @@ function checkPW() {
       <div class="ms-date">Jul 14, 2026</div>
       <div class="ms-name-row">
         <span class="ms-name">Alpha</span>
-        <span class="ms-days-inline ms-days-next">— 59 days away</span>
+        <span class="ms-days-inline ms-days-next">— 57 days away</span>
       </div>
       <div class="ms-divider"></div>
       <div class="ms-feat-count">FEATs: <span class="ms-feat-done">5</span> of 26 done</div>
@@ -1056,7 +1133,7 @@ function checkPW() {
       <div class="ms-date">Aug 12, 2026</div>
       <div class="ms-name-row">
         <span class="ms-name">Beta</span>
-        <span class="ms-days-inline">— 88 days away</span>
+        <span class="ms-days-inline">— 86 days away</span>
       </div>
       <div class="ms-divider"></div>
       <div class="ms-feat-count">FEATs: <span class="ms-feat-done">0</span> of 15 done</div>
@@ -1065,7 +1142,7 @@ function checkPW() {
       <div class="ms-date">Sep 1, 2026</div>
       <div class="ms-name-row">
         <span class="ms-name">Public Launch</span>
-        <span class="ms-days-inline">— 108 days away</span>
+        <span class="ms-days-inline">— 106 days away</span>
       </div>
       <div class="ms-divider"></div>
       <div class="ms-feat-count">FEATs: <span class="ms-feat-done">0</span> of 3 done</div>
@@ -1114,11 +1191,7 @@ function checkPW() {
           <input class="dair-date-badge" type="date" value="2026-05-12" onchange="updateStatusDate(0,this.value)" title="Date">
           <span class="status-dot-sm status-dot-sm-amber" title="amber"></span>
         </div>
-        <div class="dair-card-text" contenteditable="true" onblur="updateStatusCard(0,this)" onkeydown="statusCardKeydown(event,0)">Finalizing product requirements along with designs for Alpha by 5/15&nbsp;
-- Most of the Fantasy FE Team is onboarding this week&nbsp;
-- Fantasy Team Engineering is completing Alpha Feature breakdown by 5/15&nbsp;
-- Looking to bring in launch from 9/9 to 9/1 in order to support outreach before the start of the NFL season. Need to review with all engineering teams before committing to this updated timeline.
-- Request from shared services to borrow 2-3 engineers for 2 sprints in order to mitigate the risk of missing the Beta deadline. Currently exploring internally these impacts and if this can be supported.</div>
+        <div class="dair-card-text" contenteditable="true" onblur="updateStatusCard(0,this)" onkeydown="statusCardKeydown(event,0)">Finalizing product requirements along with designs for Alpha by 5/15&nbsp; - Most of the Fantasy FE Team is onboarding this week&nbsp; - Fantasy Team Engineering is completing Alpha Feature breakdown by 5/15&nbsp; - Looking to bring in launch from 9/9 to 9/1 in order to support outreach before the start of the NFL season. Need to review with all engineering teams before committing to this updated timeline. - Request from shared services to borrow 2-3 engineers for 2 sprints in order to mitigate the risk of missing the Beta deadline. Currently exploring internally these impacts and if this can be supported.</div>
       </div>
       <button class="dair-card-remove" onclick="removeStatusCard(0)" title="Remove">×</button>
     </div></div>
@@ -1356,6 +1429,85 @@ Complete analysis/impacts for potentially bringing in the public launch date fro
     </div></div>
     </div>
   </div>
+
+
+  <!-- Dependency Open Items & Next Steps -->
+  <div class="section-card">
+    <div class="section-header">
+      <span class="section-title">🔶 Dependency Open Items &amp; Next Steps</span>
+    </div>
+    <div class="section-body">
+
+      <!-- Odds Factory subsection -->
+      <div class="of-subsection-title">Odds Factory</div>
+
+      <!-- Gantt Roadmap -->
+      <table class="of-gantt">
+        <thead>
+          <tr>
+            <th class="label-col">Work Item</th>
+            <th>M30.1</th>
+            <th class="now-col">M30.2 <span class="of-now-badge">NOW</span></th>
+            <th>M30.3</th>
+            <th>M30.4</th>
+            <th>M31.1</th>
+            <th>M31.2</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Row 1: Alpha requirements — M30.2 (now) → M30.4 -->
+          <tr>
+            <td class="label-col" title="[OF] DFS: Trading Engineering/Product Requirements [Alpha]">[OF] Trading Eng/Product Requirements [Alpha]</td>
+            <td class="empty-cell"></td>
+            <td class="bar-cell bar-start"></td>
+            <td class="bar-cell"></td>
+            <td class="bar-cell bar-end"></td>
+            <td class="empty-cell"></td>
+            <td class="empty-cell"></td>
+          </tr>
+          <!-- Row 2: Beta requirements — M31.1 → M31.2 -->
+          <tr>
+            <td class="label-col" title="[OF] DFS: Trading Engineering/Product Requirements [Beta]">[OF] Trading Eng/Product Requirements [Beta]</td>
+            <td class="empty-cell"></td>
+            <td class="empty-cell"></td>
+            <td class="empty-cell"></td>
+            <td class="empty-cell"></td>
+            <td class="bar-cell bar-cell-blue bar-start"></td>
+            <td class="bar-cell bar-cell-blue bar-end"></td>
+          </tr>
+          <!-- Row 3: Unlock Manual Resulting — M30.3 only -->
+          <tr>
+            <td class="label-col" title="[ETEX] Unlock Manual Resulting Capabilities - Market Manager (DFS)">[ETEX] Unlock Manual Resulting Capabilities - Market Manager (DFS)</td>
+            <td class="empty-cell"></td>
+            <td class="empty-cell"></td>
+            <td class="bar-cell bar-cell-green bar-solo"></td>
+            <td class="empty-cell"></td>
+            <td class="empty-cell"></td>
+            <td class="empty-cell"></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Open Items -->
+      <div class="of-subsection-title" style="margin-top:4px;">Open Items</div>
+      <div class="of-open-items" id="of-open-items">
+    <div class="of-item-card">
+      <input class="of-item-date" type="date" value="2026-05-18" onchange="updateOfDate(0,this.value)" title="Date">
+      <div class="of-item-text" contenteditable="true" onblur="updateOfText(0,this)" onkeydown="ofItemKeydown(event,0)">Playmaker integration targeted for launch; transition to RAD planned post-launch. Playmaker work needs to be scheduled and team ownership confirmed. Scheduling meeting with Liz to confirm this approach along with ownership and timing for this playmaker support.</div>
+      <button class="of-item-remove" onclick="removeOfItem(0)">×</button>
+    </div>
+  
+    <div class="of-item-card">
+      <input class="of-item-date" type="date" value="2026-05-18" onchange="updateOfDate(1,this.value)" title="Date">
+      <div class="of-item-text" contenteditable="true" onblur="updateOfText(1,this)" onkeydown="ofItemKeydown(event,1)">Need to clarify with Michael Goodwin playmaker support as it was called out we would need playmaker support and not clear if that was for the work since RAD is post-launch or if it was for something else?&nbsp;</div>
+      <button class="of-item-remove" onclick="removeOfItem(1)">×</button>
+    </div>
+  </div>
+      <button class="of-add-btn" onclick="addOfItem()">+ Add Open Item</button>
+
+    </div>
+  </div>
+
 
   <!-- FNTSY Epic Tracker -->
   <div class="section-card">
@@ -3193,6 +3345,70 @@ function dairLogKeydown(e, idx) {
   }
 }
 
+
+// ─────────────────────────────────────────
+//  ODDS FACTORY OPEN ITEMS
+// ─────────────────────────────────────────
+function getOfItems() {
+  try { return JSON.parse(localStorage.getItem('dfs_of_items') || '[]'); }
+  catch(e) { return []; }
+}
+function saveOfItems(items) { localStorage.setItem('dfs_of_items', JSON.stringify(items)); }
+
+function renderOfItems() {
+  const container = document.getElementById('of-open-items');
+  if (!container) return;
+  const items = getOfItems();
+  container.innerHTML = items.map((item, i) => `
+    <div class="of-item-card">
+      <input class="of-item-date" type="date" value="${esc(item.date||'')}"
+             onchange="updateOfDate(${i},this.value)" title="Date">
+      <div class="of-item-text"
+           contenteditable="true"
+           onblur="updateOfText(${i},this)"
+           onkeydown="ofItemKeydown(event,${i})"
+      >${esc(item.text||'')}</div>
+      <button class="of-item-remove" onclick="removeOfItem(${i})">×</button>
+    </div>
+  `).join('');
+}
+
+function addOfItem() {
+  const items = getOfItems();
+  const today = new Date().toISOString().split('T')[0];
+  items.unshift({ date: today, text: '' });
+  saveOfItems(items);
+  renderOfItems();
+  setTimeout(() => {
+    const cards = document.querySelectorAll('#of-open-items .of-item-text');
+    if (cards[0]) cards[0].focus();
+  }, 50);
+}
+
+function removeOfItem(idx) {
+  const items = getOfItems();
+  items.splice(idx, 1);
+  saveOfItems(items);
+  renderOfItems();
+}
+
+function updateOfDate(idx, val) {
+  const items = getOfItems();
+  if (items[idx]) { items[idx].date = val; saveOfItems(items); }
+}
+
+function updateOfText(idx, el) {
+  const items = getOfItems();
+  if (items[idx]) { items[idx].text = el.innerText.trim(); saveOfItems(items); }
+}
+
+function ofItemKeydown(e, idx) {
+  if (e.key === 'Backspace' && e.currentTarget.innerText.trim() === '') {
+    e.preventDefault();
+    removeOfItem(idx);
+  }
+}
+
 // ─────────────────────────────────────────
 //  SPRINT UTILITIES
 // ─────────────────────────────────────────
@@ -3850,26 +4066,36 @@ function extractNodes(res) {
   return [];
 }
 
+async function callWithTimeout(toolName, args, timeoutMs = 25000) {
+  return new Promise((resolve, reject) => {
+    const timer = setTimeout(() => reject(new Error('Jira request timed out — try again')), timeoutMs);
+    window.cowork.callMcpTool(toolName, args)
+      .then(r => { clearTimeout(timer); resolve(r); })
+      .catch(e => { clearTimeout(timer); reject(e); });
+  });
+}
+
 async function fetchPage(jql, fields, maxResults) {
   const args = { cloudId: CLOUD, jql, fields, maxResults };
-  const raw = await window.cowork.callMcpTool(JQL_TOOL, args);
+  const raw = await callWithTimeout(JQL_TOOL, args);
   const res = parseToolResponse(raw);
   return res ? extractNodes(res) : [];
 }
 
 // Generic paginated fetch using nextPageToken
 async function fetchAll(jql, fields) {
-  let all = [], token = undefined;
+  let all = [], token = undefined, pageCount = 0;
   do {
     const args = { cloudId: CLOUD, jql, fields, maxResults: 50 };
     if (token) args.nextPageToken = token;
-    const raw = await window.cowork.callMcpTool(JQL_TOOL, args);
+    const raw = await callWithTimeout(JQL_TOOL, args);
     const res = parseToolResponse(raw);
     if (!res) break;
     const nodes = extractNodes(res);
     all = all.concat(nodes);
-    // nextPageToken is at the TOP level of the response, not under res.issues
     token = res?.nextPageToken || null;
+    pageCount++;
+    if (pageCount >= 10) break; // safety cap
   } while (token);
   return all;
 }
@@ -3877,13 +4103,15 @@ async function fetchAll(jql, fields) {
 // Cursor-based pagination for FNTSY (large project — fetches 50 at a time by key)
 async function fetchAllFNTSY() {
   const PAGE = 50;
-  let all = [], lastKey = null;
-  while (true) {
+  const MAX_PAGES = 10; // safety cap — 500 epics max
+  let all = [], lastKey = null, pageCount = 0;
+  while (pageCount < MAX_PAGES) {
     const jql = lastKey
       ? `project = FNTSY AND issuetype = Epic AND issuekey > ${lastKey} ORDER BY issuekey ASC`
       : `project = FNTSY AND issuetype = Epic ORDER BY issuekey ASC`;
     const page = await fetchPage(jql, EPIC_FIELDS, PAGE);
     all = all.concat(page);
+    pageCount++;
     if (page.length < PAGE) break;
     lastKey = page[page.length - 1].key;
   }
@@ -4215,6 +4443,7 @@ async function doPublish(cfg) {
       statusCards:  localStorage.getItem('dfs_status_cards')      || '[]',
       nextStepCards:localStorage.getItem('dfs_nextsteps_cards')   || '[]',
       dairLog:      localStorage.getItem('dfs_dair_log')          || '[]',
+      ofItems:      localStorage.getItem('dfs_of_items')          || '[]',
     };
     const inject = `<script>window.SNAPSHOT={fntsy:${snap.fntsy},deps:${snap.deps},feats:${snap.feats},lastUpdate:${JSON.stringify(snap.lastUpdate)},status:${JSON.stringify(snap.status)},statusCards:${snap.statusCards},nextStepCards:${snap.nextStepCards},dairLog:${snap.dairLog}};<\/script>`;
     // Reset password gate so it shows on the published snapshot
@@ -4271,6 +4500,7 @@ async function doPublish(cfg) {
 
 init();
 renderStakeholders();
+renderOfItems();
 </script>
 
 
